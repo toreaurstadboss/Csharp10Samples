@@ -1,11 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Csharp10Samples;
+using System.Threading.Tasks;
+using static System.Console;
 
-string framework = AppDomain.CurrentDomain.SetupInformation.TargetFrameworkName;
-Console.WriteLine($"This is running {framework} with CSharp language version {GetLanaguageVersion(framework)}");
 
-Console.WriteLine("Hit the any key to continue");
+// See https://aka.ms/new-console-template for more information
 
-Console.ReadKey();
+//C# Language Hightlights: Top level statements video - top level statements are fun 
+
+// https://www.youtube.com/watch?v=Ge9qaMI8Cc4
+
+WriteLine("Hulloh, lets run some code in Top level statements. This has been available since C# 9 tho. Finding the .net framework version..");
+
+await Task.Delay((int) (0.2D * 1000.0D)); //yes, can await in top level statements 
+
+
+string framework = AppDomain.CurrentDomain.SetupInformation.TargetFrameworkName ?? "dunno";
+WriteLine($"This is running {framework} with CSharp language version {GetLanaguageVersion(framework)}");
 
 
 //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version
@@ -20,5 +30,13 @@ string GetLanaguageVersion(string targetFramework) => targetFramework switch {
     _ => "dunno" //fallback
 };
 
+DemoConstInterpolation.RunDemo();
+
+
+//Uncomment language below to reveal C# version ! 
 
 //#error version
+
+WriteLine("Hit the any key to continue ...");
+
+Console.ReadKey();
